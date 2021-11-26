@@ -9,16 +9,17 @@
     <descriptor id="notificationItem" />
     <descriptor id="dateCreated" def="https://schema.org/dateCreated"/>
     <descriptor id="tweetBody" title="ツイート本文"/>
-
     <descriptor id="trendWord" title="トレンドワード"/>
     <descriptor id="news" title="ニュース"/>
+    <descriptor id="likes"/>
+    <descriptor id="title" />
 
     <!--  Taxonomy  -->
     <descriptor id="Home">
-        <descriptor id="#tweetList" title=""/>
+        <descriptor href="#tweetList"/>
         <descriptor href="#goMoreTweet"/>
         <descriptor href="#goExplore" />
-        <descriptor href="#goNotification" />
+        <descriptor href="#goNotifications" />
         <descriptor href="#goMessages" />
         <descriptor href="#doTweet"/>
         <descriptor href="#goLists" />
@@ -86,8 +87,8 @@
         <descriptor href="#tweetItem" />
     </descriptor>
     <descriptor id="tweetItem">
-        <descriptor id="user" />
-        <descriptor id="dateCreated" />
+        <descriptor href="#user" />
+        <descriptor href="#dateCreated" />
         <descriptor href="#tweetBody" />
         <descriptor href="#likes" />
         <descriptor href="#retweetList" title="RTした人一覧" />
@@ -115,9 +116,7 @@
     <descriptor id="Trending" title="トレンド">
         <descriptor href="#trendWordList"/>
     </descriptor>
-
-    <descriptor id="likes"/>
-    <descriptor id="rts"/>
+    <descriptor id="retweetList" href="#userList" title="RTした人一覧"/>
 
     <!-- Choreography   -->
     <!-- Application state to application state -->
