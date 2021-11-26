@@ -12,8 +12,8 @@
 
     <descriptor id="tweetBody" title="ツイート本文"/>
 
-
     <descriptor id="trendWord" title="トレンドワード"/>
+    <descriptor id="news" title="ニュース"/>
 
     <!--  Taxonomy  -->
     <descriptor id="Home">
@@ -73,8 +73,16 @@
     <descriptor id="newsList" title="ニュースリスト">
         <descriptor href="#news" />
     </descriptor>
-    <descriptor id="listList" title="リストのリスト">
-        <descriptor href="list"/>
+    <descriptor id="listOfList" title="リスト一覧">
+        <descriptor href="#list"/>
+    </descriptor>
+
+    <descriptor id="tweeterList" title="リスト">
+        <descriptor id="#title" />
+        <descriptor id="#tweetList" />
+        <descriptor id="#doFollowList" />
+        <descriptor id="#goListMembers" />
+        <descriptor id="#goListFollowers" />
     </descriptor>
 
     <descriptor id="ForYou" title="おすすめ">
@@ -85,7 +93,7 @@
     <descriptor id="Covid19" title="COVID-19">
         <descriptor href="#newsList" />
         <descriptor href="#tweetList" />
-        <descriptor href="#listList" />
+        <descriptor href="#listOfList" />
     </descriptor>
 
     <descriptor id="Trending" title="トレンド">
