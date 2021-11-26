@@ -7,7 +7,27 @@ digraph application_state_diagram {
   ];
   node [shape = box, style = "bold,filled" fillcolor="lightgray"];
 
+    Explore [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>Explore<br />(ForYou)<br />(Covid19)<br />(Trending)<br /></td></tr></table>>,shape=box URL="docs/semantic.Explore.html" target="_parent"]
+    Home [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>Home<br />(tweetList)<br /></td></tr></table>>,shape=box URL="docs/semantic.Home.html" target="_parent"]
+    ListFollowers [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>ListFollowers<br />(userList)<br /></td></tr></table>>,shape=box URL="docs/semantic.ListFollowers.html" target="_parent"]
+    ListItem [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>ListItem<br />(list)<br /></td></tr></table>>,shape=box URL="docs/semantic.ListItem.html" target="_parent"]
+    ListMembers [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>ListMembers<br />(userList)<br /></td></tr></table>>,shape=box URL="docs/semantic.ListMembers.html" target="_parent"]
+    Lists [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>Lists<br />(listOfList)<br /></td></tr></table>>,shape=box URL="docs/semantic.Lists.html" target="_parent"]
+    Mentions [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>Mentions<br />(tweetList)<br /></td></tr></table>>,shape=box URL="docs/semantic.Mentions.html" target="_parent"]
+    Notifications [margin=0.02, label=<<table cellspacing="0" cellpadding="5" border="0"><tr><td>Notifications<br />(notificationList)<br /></td></tr></table>>,shape=box URL="docs/semantic.Notifications.html" target="_parent"]
 
+    Home -> Explore [label = <goExplore (safe)> URL="docs/safe.goExplore.html" target="_parent" fontsize=13];
+    Home -> Home [label=<<table  border="0"><tr><td align="left" href="docs/unsafe.doTweet.html">doTweet (unsafe)</td></tr><tr><td align="left" href="docs/safe.goMoreTweet.html">goMoreTweet (safe)</td></tr></table>> fontsize=13];
+    Home -> Lists [label = <goLists (safe)> URL="docs/safe.goLists.html" target="_parent" fontsize=13];
+    Home -> Messages [label = <goMessages (safe)> URL="docs/safe.goMessages.html" target="_parent" fontsize=13];
+    Home -> Notifications [label = <goNotifications (safe)> URL="docs/safe.goNotifications.html" target="_parent" fontsize=13];
+    ListItem -> ListFollowers [label = <goListFollowers (safe)> URL="docs/safe.goListFollowers.html" target="_parent" fontsize=13];
+    ListItem -> ListItem [label = <doFollowList (idempotent)> URL="docs/idempotent.doFollowList.html" target="_parent" fontsize=13];
+    ListItem -> ListMembers [label = <goListMembers (safe)> URL="docs/safe.goListMembers.html" target="_parent" fontsize=13];
+    Lists -> ListItem [label = <goListItem (safe)> URL="docs/safe.goListItem.html" target="_parent" fontsize=13];
+    Mentions -> Notifications [label = <goNotifications (safe)> URL="docs/safe.goNotifications.html" target="_parent" fontsize=13];
+    Notifications -> Mentions [label = <goMentions (safe)> URL="docs/safe.goMentions.html" target="_parent" fontsize=13];
 
+    Messages [label = <Messages> URL="docs/semantic.Messages.html" target="_parent"]
 
 }
