@@ -6,10 +6,8 @@
     <descriptor id="id" def="https://schema.org/identifier" />
     <descriptor id="tweeterId" href="#id" />
     <descriptor id="name" def="https://schema.org/name"/>
-    <descriptor id="tweetItem" />
-    <descriptor id="notification" />
+    <descriptor id="notificationItem" />
     <descriptor id="dateCreated" def="https://schema.org/dateCreated"/>
-
     <descriptor id="tweetBody" title="ツイート本文"/>
 
     <descriptor id="trendWord" title="トレンドワード"/>
@@ -23,6 +21,7 @@
         <descriptor href="#goNotification" />
         <descriptor href="#goMessages" />
         <descriptor href="#doTweet"/>
+        <descriptor href="#goLists" />
     </descriptor>
 
     <descriptor id="Explore">
@@ -44,6 +43,37 @@
     <descriptor id="Messages">
     </descriptor>
 
+    <descriptor id="ListMembers">
+        <descriptor href="#userList" />
+    </descriptor>
+
+    <descriptor id="ListFollowers">
+        <descriptor href="#userList" />
+    </descriptor>
+
+    <descriptor id="ListItem" title="Twitterのリスト機能">
+        <descriptor href="#list" />
+        <descriptor href="#doFollowList"/>
+        <descriptor href="#goListMembers" />
+        <descriptor href="#goListFollowers" />
+    </descriptor>
+
+    <descriptor id="ForYou" title="おすすめ">
+        <descriptor href="#trendWordList" />
+        <descriptor href="#tweetList" />
+    </descriptor>
+
+    <descriptor id="Covid19" title="COVID-19">
+        <descriptor href="#newsList" />
+        <descriptor href="#tweetList" />
+        <descriptor href="#listOfList" />
+    </descriptor>
+
+    <descriptor id="Lists" title="list">
+        <descriptor href="#listOfList" />
+        <descriptor href="#goListItem" />
+    </descriptor>
+
     <!-- Non-application state taxonomy -->
     <descriptor id="user">
         <descriptor href="#tweeterId" />
@@ -60,7 +90,7 @@
         <descriptor id="dateCreated" />
         <descriptor href="#tweetBody" />
         <descriptor href="#likes" />
-        <descriptor href="rts" />
+        <descriptor href="#retweetList" title="RTした人一覧" />
         <descriptor href="#tweetList" title="メンションのツイートリスト"/>
     </descriptor>
     <descriptor id="notificationList" title="すべての通知リスト">
@@ -77,23 +107,9 @@
         <descriptor href="#list"/>
     </descriptor>
 
-    <descriptor id="tweeterList" title="リスト">
-        <descriptor id="#title" />
-        <descriptor id="#tweetList" />
-        <descriptor id="#doFollowList" />
-        <descriptor id="#goListMembers" />
-        <descriptor id="#goListFollowers" />
-    </descriptor>
-
-    <descriptor id="ForYou" title="おすすめ">
-        <descriptor href="#trendWordList" />
+    <descriptor id="list" >
+        <descriptor href="#title" />
         <descriptor href="#tweetList" />
-    </descriptor>
-
-    <descriptor id="Covid19" title="COVID-19">
-        <descriptor href="#newsList" />
-        <descriptor href="#tweetList" />
-        <descriptor href="#listOfList" />
     </descriptor>
 
     <descriptor id="Trending" title="トレンド">
@@ -106,13 +122,20 @@
     <!-- Choreography   -->
     <!-- Application state to application state -->
     <descriptor id="goExplore" type="safe" rt="#Explore" title="話題を検索を見る"/>
-    <descriptor id="goNotification" type="safe" rt="#Notifications" title="通知を見る"/>
+    <descriptor id="goNotifications" type="safe" rt="#Notifications" title="通知を見る"/>
     <descriptor id="goMessages" type="safe" rt="#Messages" title="メッセージを見る"/>
     <descriptor id="goMentions" type="safe" rt="#Mentions" title="@ツイートを見る" />
+    <descriptor id="goListMembers" type="safe" rt="#ListMembers" />
+    <descriptor id="goListFollowers" type="safe" rt="#ListFollowers" />
+    <descriptor id="goLists" type="safe" rt="#Lists" />
+    <descriptor id="goListItem" type="safe" rt="#ListItem" />
 
     <!-- Action -->
-    <descriptor id="goMoreTweet" rt="Home" title="もっとツイートを表示する" />
-    <descriptor id="doTweet" title="つぶやく">
-        <descriptor id="#tweetBody" title="ツイートをもっと見る" />
+    <descriptor id="goMoreTweet" type="safe" rt="#Home" title="もっとツイートを表示する" />
+    <descriptor id="doTweet" type="unsafe" rt="#Home" title="つぶやく">
+        <descriptor href="#tweetBody" />
+    </descriptor>
+    <descriptor id="doFollowList" type="idempotent" rt="#ListItem" title="リストをフォローする">
+        <descriptor href="#id" />
     </descriptor>
 </alps>
